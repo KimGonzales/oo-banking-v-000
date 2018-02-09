@@ -19,7 +19,7 @@ class Transfer
     #transfer cannot happen if
     # 1. it already happened (status is complete)
     # 2. the sender does not have a valid account
-    if @sender.valid? && @status == "pending"
+    if self.valid?==true && @status == "pending"
       @sender.balance -= @amount
       @receiver.balance += @amount
       @status = "complete"
