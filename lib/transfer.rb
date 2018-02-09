@@ -19,7 +19,7 @@ class Transfer
     #transfer cannot happen if
     # 1. it already happened (status is complete)
     # 2. the sender does not have a valid account
-    if !sender.valid?
+    if !sender.valid? || sender.balance < @amount 
       "Transaction rejected. Please check your account balance."
     else
       @status == "pending" && sender.valid?
