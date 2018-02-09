@@ -19,12 +19,12 @@ class Transfer
     #transfer cannot happen if
     # 1. it already happened (status is complete)
     # 2. the sender does not have a valid account
-    if !valid? 
-      "Transaction rejected. Please check your account balance."
-    else
+    if self.valid? 
       @sender.balance -= @amount
       @receiver.balance += @amount
       @status = "complete"
+    else 
+      "Transaction rejected. Please check your account balance."
     end
   end
 
