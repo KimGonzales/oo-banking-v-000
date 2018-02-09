@@ -20,9 +20,10 @@ class Transfer
     # 1. it already happened (status is complete)
     # 2. the sender does not have a valid account
     if !sender.valid? || sender.balance < @amount
-        status = "rejected"
+        @status = "rejected"
       "Transaction rejected. Please check your account balance."
-    else @status == "pending"
+    end
+    if @status == "pending"
         @sender.balance -= @amount
         @receiver.balance += @amount
         @status = "complete"
